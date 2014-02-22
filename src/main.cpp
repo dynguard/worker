@@ -59,11 +59,16 @@ int main()
 		cout << "Size of no_machines: " << no_machines << endl;
 		struct thread_args td[no_machines];
 
+
 		for (int i = 0; i < no_machines; i++)
 		{
+
+			//Here we want to check that thread[i] != 0 which will indicate a closed thread
+			//I also need to ensure that we keep track of threads[i] in a different array somehow
 			if (threads[i])
 			{
 				int ret = pthread_kill(threads[i], 0);
+				//if ret == 3 that is because the thread died
 				cout << "For TID: " << i << " we got Ret: " << ret << endl;
 			}
 
